@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails blacklist: development" uuid="898155f2-b112-46c7-85fd-2ccd33dec7b5" />
+    <data-source name="Rails blacklist: test" uuid="31f0b89f-304c-4ff8-9b7e-41c6780c8019" />
+    <data-source name="Rails blacklist: production" uuid="06a39615-ceb3-44b4-be42-898cdfa81f5e">
+      <user-name>blacklist</user-name>
+      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddfe8dfe6dfebdfe9dfe1dfe6dfe3dff9dffedff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
+    </data-source>
+  </component>
+</project>

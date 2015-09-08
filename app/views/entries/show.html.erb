@@ -1,0 +1,41 @@
+<h1 class='page-header'>Entry for <%= @entry.name.capitalize.slice /\S*/ %></h1>
+
+<div class="col-md-3">
+
+    <div class="list-group">
+        <h3 class="caption bold">Name:</h3><br/>
+        <p class="col-md-offset-1"><%= @entry.name %></p>
+    </div>
+    <div class="">
+        <h3 class="caption bold">CNPJ:</h3><br/>
+        <p class="col-md-offset-1">
+            <% if @entry.cnpj.length == 14 %>
+                <%= format_as_cnpj @entry.cnpj %>
+            <% else %>
+                <%= format_as_cpf @entry.cnpj %>
+            <% end %>
+        </p>
+    </div>
+    <div class="">
+        <h3 class="caption bold">Description:</h3><br/>
+
+        <p class="col-md-offset-1">
+            <% @entry.description.each_line do |l| %>
+                <%= l %> <br/>
+            <% end %>
+        </p>
+    </div>
+    <div class="">
+        <h3 class="caption bold">Date Added:</h3><br/>
+        <p class="col-md-offset-1"><%= @entry.created_at %></p>
+    </div>
+
+    <br/>
+
+    <%= link_to _back_url, class: 'btn btn-default bt-md' do 'Back' end %>
+    <%= link_to delete_path(@entry), class: 'btn btn-default btn-md', data: { confirm: 'Are you sure you want to remove this entry?'} do 'Remove entry' end %>
+    <br/><br/><br/>
+
+</div>
+
+

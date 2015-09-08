@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blacklist</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <%= csrf_meta_tags %>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-static-top ">
+    <div class="container">
+        <div class="navbar-header">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <%= link_to root_url, class: 'navbar-brand' do
+              'Blacklists'
+            end %>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <% if current_user %>
+                <ul class="nav navbar-nav text-right text-capitalize">
+                    <% if current_user.admin? %>
+                        <li><%= link_to sign_up_url do 'Create user' end %></li>
+                    <% end %>
+                    <li><%= link_to list_url do 'List' end %></li>
+                    <li><%= link_to change_password_url do 'Change Password' end %></li>
+                </ul>
+                <div class="navbar-right text-right">
+                    <p class="navbar-text"> Logged in as <%= current_user.email %>
+                        <%= link_to logout_url, class: 'btn btn-primary btn-xs' do
+                          'Log Out'
+                        end %>
+                    </p>
+                </div>
+            <% else %>
+                <%= form_tag sessions_path, :class => 'navbar-form navbar-right' do %>
+                    <div class="form-group">
+                        <%= text_field_tag :email, params[:email], class: 'form-control', placeholder: 'Email' %>
+                    </div>
+                    <div class="form-group">
+                        <%= password_field_tag :password, nil, class: 'form-control', placeholder: 'Password' %>
+                    </div>
+                    <%= submit_tag 'Login', class: 'btn btn-success' %>
+                <% end %>
+            <% end %>
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+    <% flash.each do |name, msg| %>
+        <div class="alert alert-info alert-dismissable fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <%= content_tag :div, msg, :id => "flash-#{name}" %>
+        </div>
+    <% end %>
+
+    <%= yield %>
+
+</div>
+
+</body>
+</html>

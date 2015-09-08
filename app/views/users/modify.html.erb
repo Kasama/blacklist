@@ -1,0 +1,22 @@
+<h1>Change password</h1>
+
+<%= form_tag edit_pass_path, action: 'change_password', class: 'container col-md-4 centered form-horizontal' do %>
+
+    <div class="field form-group">
+        <%= label_tag :old_password, nil, class: 'control-label' %> <br/>
+        <%= password_field_tag :old_password, nil, class: 'form-control' %>
+    </div>
+    <div class="field form-group">
+        <%= label_tag :password, nil, class: 'control-label' %> <br/>
+        <%= password_field_tag :password, nil, class: 'form-control' %>
+    </div>
+    <div class="field form-group">
+        <%= label_tag :password_confirmation, nil, class: 'control-label' %> <br/>
+        <%= password_field_tag :password_confirmation, nil, class: 'form-control' %>
+    </div>
+
+    <div class="action form-group">
+        <%= submit_tag 'Change Password', class: 'btn btn-success btn-md' %>
+    </div>
+
+<% end %>
